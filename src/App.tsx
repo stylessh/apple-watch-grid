@@ -58,7 +58,7 @@ function App() {
     const row = Math.ceil(i / columns);
     const col = i % columns;
 
-    return row % 2 === 0 && col < 12 ? "-150px" : "0";
+    return row % 2 === 0 && col < 12 ? "-18vw" : "0";
   };
 
   return (
@@ -68,6 +68,8 @@ function App() {
         useTransform
         useMouseDrag
         useGesture
+        displayHorizontalScroll={false}
+        displayVerticalScroll={false}
       >
         <div
           className="relative grid place-items-center"
@@ -76,7 +78,8 @@ function App() {
             height: `${gridH}px`,
             top: "-50%",
             left: "-50%",
-            gridTemplateColumns: `repeat(${items.length / 10}, 250px)`,
+            gridTemplateColumns: `repeat(${items.length / 10}, 18vw)`,
+            gridTemplateRows: `repeat(${items.length / 10}, 18vw)`,
           }}
         >
           {items.map((item) => (
@@ -84,8 +87,8 @@ function App() {
               key={item}
               className="flex items-center justify-center text-center text-black bg-white rounded-full bubble"
               style={{
-                width: "250px",
-                height: "250px",
+                width: "18vw",
+                height: "18vw",
                 marginLeft: applyMargin(item),
               }}
             />

@@ -61,23 +61,36 @@ function App() {
     return row % 2 === 0 && col < 12 ? "-18vw" : "0";
   };
 
+  const generateGradient = () => {
+    // complementary colors - hex
+    const colors = [
+      ["#8360c3", "#2ebf91"],
+      ["#44A08D", "#093637"],
+      ["#ffd89b", "#19547b"],
+    ];
+
+    const gradient = colors[Math.floor(Math.random() * colors.length)];
+
+    return `linear-gradient(to right, ${gradient[0]}, ${gradient[1]})`;
+  };
+
   return (
     <main className="w-full h-full bg-black">
       <InfiniteViewer
-        className="w-screen h-screen overflow-hidden"
+        className="w-screen h-screen overflow-hidden cursor-grab"
         useTransform
         useMouseDrag
         useGesture
         displayHorizontalScroll={false}
         displayVerticalScroll={false}
+        rangeX={[(-1 * viewportWidth) / 2, gridW - viewportWidth * 1.5]}
+        rangeY={[(-1 * viewportHeight) / 2, gridH - viewportHeight * 1.9]}
       >
         <div
-          className="relative grid place-items-center"
+          className="relative grid place-items-center -top-1/2 -left-1/2"
           style={{
             width: `${gridW}px`,
             height: `${gridH}px`,
-            top: "-50%",
-            left: "-50%",
             gridTemplateColumns: `repeat(${items.length / 10}, 18vw)`,
             gridTemplateRows: `repeat(${items.length / 10}, 18vw)`,
           }}
@@ -85,10 +98,9 @@ function App() {
           {items.map((item) => (
             <div
               key={item}
-              className="flex items-center justify-center text-center text-black bg-white rounded-full bubble"
+              className="flex items-center justify-center text-center text-black bg-white rounded-full bubble size-[18vw]"
               style={{
-                width: "18vw",
-                height: "18vw",
+                backgroundImage: generateGradient(),
                 marginLeft: applyMargin(item),
               }}
             />

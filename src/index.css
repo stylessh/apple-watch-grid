@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* .bubble:nth-child(n + 1):nth-child(-n + 12),
+  .bubble:nth-child(n + 24):nth-child(-n + 32) {
+    margin-left: -125px;
+  } */
+}

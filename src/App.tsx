@@ -64,9 +64,8 @@ function App() {
   const generateGradient = () => {
     // complementary colors - hex
     const colors = [
-      ["#8360c3", "#2ebf91"],
-      ["#44A08D", "#093637"],
-      ["#ffd89b", "#19547b"],
+      ["#211f2f", "#918ca9"],
+      ["#727a9a", "#d8dbe9"],
     ];
 
     const gradient = colors[Math.floor(Math.random() * colors.length)];
